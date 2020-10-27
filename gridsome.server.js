@@ -1,16 +1,20 @@
-// Server API makes it possible to hook into various parts of Gridsome
-// on server-side and add custom data to the GraphQL data layer.
-// Learn more: https://gridsome.org/docs/server-api/
-
+// Server API for hooking into Gridsome on server-side and adding data to the GraphQL layer.
 // Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
+// Docs: https://gridsome.org/docs/server-api/
+
+const fs = require('fs');
+const yaml = require('js-yaml');
+
+const countryDataYml = fs.readFileSync('./src/data/countries.yml', 'utf8');
+const countryData = yaml.safeLoad(countryDataYml);
 
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-  })
-
-  api.createPages(({ createPage }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api/
+  api.loadSource(async actions => {
+    const collection = actions.addCollection({
+      typeName: 'Countries'
+    })
+    for (const country of countryData) {
+      collection.addNode(country);
+    }
   })
 }
