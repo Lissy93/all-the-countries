@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="edge in $static.allTheCountries.edges" :key="edge.node.idd.root+edge.node.idd.suffixes">
+    <div v-for="edge in $static.allTheCountries.edges" :key="edge.node.cca3">
       <h2>{{ edge.node.name.common }}</h2>
     </div>
   </div>
@@ -14,10 +14,7 @@ query {
         name {
           common
         }
-        idd {
-          root
-          suffixes
-        }
+        cca3
       }
     }
   }
