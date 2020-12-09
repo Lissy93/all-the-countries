@@ -6,7 +6,7 @@
 
 <script>
 
-import Countries from '@/templates/Countries';
+import Countries from '@/components/Countries';
 
 export default {
   metaInfo: {
