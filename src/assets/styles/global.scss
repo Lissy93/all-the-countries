@@ -5,9 +5,36 @@
 	--small-text: #aaaaaa;
 }
 
+@font-face {
+  font-family: "RobotoMono";
+  src: url('../fonts/RobotoMono-Variable.ttf');
+}
+
 body {
-	font-family: Consolas, courier, monospace;
+	font-family: "RobotoMono", Consolas, courier, monospace;
 	background: var(--background);
 	color: var(--text-color);
+	font-weight: 200;
+	@supports (font-variation-settings: 'wght' 200) {
+		font-weight: unset;
+		font-variation-settings: 'wght' 200;
+	}
+}
+
+/* Set Size & Font Weight for Headings */
+h1, h2, h3, h4 {
+	margin: 0;
+	font-weight: 400;
+	@supports (font-variation-settings: 'wght' 400) {
+		font-weight: unset;
+		font-variation-settings: 'wght' 400;
+	}
 
 }
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1rem; }
+
+

@@ -1,14 +1,13 @@
 <template>
   <div class="layout">
     <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
+      <h1>
+        <g-link to="/">🌍 {{ $static.metadata.siteName }}</g-link>
+      </h1>
     </header>
+    <article class="main-content">
+
+    </article>
     <slot/>
   </div>
 </template>
@@ -21,30 +20,35 @@ query {
 }
 </static-query>
 
-<style>
+<style lang="scss">
+
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   margin:0;
   padding:0;
-
 }
 
-.layout {
+.main-content {
   max-width: 760px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 1rem;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--foreground);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 75%);
+  h1 a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 2rem;
+    font-variation-settings: 'wght' 200;
+  }
 }
 
-.nav__link {
-  margin-left: 20px;
-}
+
+
 </style>
