@@ -1,0 +1,13 @@
+:root {
+	--background: #0d0e20;
+	--foreground: #ffffff0a;
+	--text-color: #ffffff;
+	--small-text: #aaaaaa;
+}
+
+body {
+	font-family: Consolas, courier, monospace;
+	background: var(--background);
+	color: var(--text-color);
+
+}

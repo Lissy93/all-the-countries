@@ -8,6 +8,11 @@
   },
   "dependencies": {
     "gridsome": "^0.7.0",
-    "js-yaml": "^3.14.0"
+    "js-yaml": "^3.14.0",
+    "twemoji": "^13.0.1"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0"
   }
 }
