@@ -8,36 +8,19 @@
       </div>
       <div class="country-flag" v-html="parseEmoji(flag)"></div>
     </div>
-    <div v-on:click="detailsVisible = !detailsVisible" class="show-hide-button">▼</div>
+    <div v-on:click="detailsVisible = !detailsVisible" class="show-hide-button">
+      {{detailsVisible ? '▲' : '▼'}}
+      </div>
     <transition name="slide-fade">
     <div v-if="detailsVisible" class="additional-content">
       <p><b>Region: </b> {{region}}, {{subregion}}</p>
-      <p>
-        <b>Languages: </b><span>{{makeTextList(languages)}}</span>
-      </p>
-      <p>
-        <b>Currencies: </b><span>{{makeTextList(currencies)}}</span>
-      </p>
-      <p>
-        <b>Domain Extension: </b>
-        <span v-for="domain in tld" :key="domain">{{domain}} </span>
-      </p>
-      <p>
-        <b>Calling Codes: </b>
-        <span>{{makeTextList(callingCodes)}}</span>
-      </p>
-      <p>
-        <b>Country Code (ISO 3166-1): </b>
-        <span>{{isoCodes.cca3}} / {{isoCodes.ccn3}}</span>
-      </p>
-      <p>
-        <b>Land Size: </b>
-        <span>{{area}} km²</span>
-      </p>
-      <p>
-        <b>Land Locked?: </b>
-        <span>{{landlocked? 'Yes' : 'No'}}</span>
-      </p>
+      <p><b>Languages: </b><span>{{makeTextList(languages)}}</span></p>
+      <p><b>Currencies: </b><span>{{makeTextList(currencies)}}</span></p>
+      <p><b>Domain Extension: </b><span>{{makeTextList(tld)}}</span></p>
+      <p><b>Calling Codes: </b><span>{{makeTextList(callingCodes)}}</span></p>
+      <p><b>Country Code (ISO 3166-1): </b><span>{{isoCodes.cca3}} / {{isoCodes.ccn3}}</span></p>
+      <p><b>Land Size: </b><span>{{area}} km²</span></p>
+      <p><b>Land Locked?: </b><span>{{landlocked? 'Yes' : 'No'}}</span></p>
     </div>
     </transition>
   </div>

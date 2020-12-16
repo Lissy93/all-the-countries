@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import Countries from '@/components/Countries';
 
 export default {

@@ -14,12 +14,15 @@ module.exports = function (api) {
       typeName: 'Countries'
     })
     for (const country of countryData) {
+      // Format Language data, for GraphQL
       country.languages = Object.values(country.languages);
       let currencies = [];
+      // Format Currency data, for GraphQL
       Object.values(country.currencies).forEach((currencyObj)=> {
         currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
       });
       country.currencies = currencies;
+      // Add country node to collection
       collection.addNode(country);
     }
   })
