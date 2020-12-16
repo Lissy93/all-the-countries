@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="countries-wrapper">
     <div v-for="edge in $static.allTheCountries.edges" :key="edge.node.cca3">
       <Country
         :name="edge.node.name.common"
@@ -21,6 +21,15 @@ query {
         cca3
         flag
         capital
+				tld
+				region
+				subregion
+				independent
+				callingCodes
+				cca2
+  			ccn3
+  			cca3
+  			cioc
       }
     }
   }
@@ -37,3 +46,9 @@ export default {
 
 }
 </script>
+
+<style>
+.countries-wrapper {
+  padding: 0.5rem 1rem;
+}
+</style>
