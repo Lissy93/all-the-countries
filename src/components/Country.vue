@@ -13,16 +13,30 @@
     <div v-if="detailsVisible" class="additional-content">
       <p><b>Region: </b> {{region}}, {{subregion}}</p>
       <p>
+        <b>Languages: </b><span>{{makeTextList(languages)}}</span>
+      </p>
+      <p>
+        <b>Currencies: </b><span>{{makeTextList(currencies)}}</span>
+      </p>
+      <p>
         <b>Domain Extension: </b>
         <span v-for="domain in tld" :key="domain">{{domain}} </span>
       </p>
       <p>
         <b>Calling Codes: </b>
-        <span v-for="callCode in callingCodes" :key="callCode">{{callCode}} </span>
+        <span>{{makeTextList(callingCodes)}}</span>
       </p>
       <p>
         <b>Country Code (ISO 3166-1): </b>
         <span>{{isoCodes.cca3}} / {{isoCodes.ccn3}}</span>
+      </p>
+      <p>
+        <b>Land Size: </b>
+        <span>{{area}} km²</span>
+      </p>
+      <p>
+        <b>Land Locked?: </b>
+        <span>{{landlocked? 'Yes' : 'No'}}</span>
       </p>
     </div>
     </transition>
@@ -50,9 +64,20 @@ export default {
     tld: Array,
     callingCodes: Array,
     isoCodes: Object,
+    languages: Array,
+    currencies: Array,
+    area: Number,
+    landlocked: Boolean,
 },
   methods: {
-    parseEmoji: (input) => twemoji.parse(input)
+    parseEmoji: (input) => twemoji.parse(input),
+    makeTextList: (arr) => {
+      let result = '';
+      arr.forEach((elem, index) =>
+        result += (index + 1 < arr.length? `${elem}, `: elem)
+      )
+      return result;
+    },
   }
 }
 </script>

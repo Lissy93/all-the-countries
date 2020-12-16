@@ -14,6 +14,12 @@ module.exports = function (api) {
       typeName: 'Countries'
     })
     for (const country of countryData) {
+      country.languages = Object.values(country.languages);
+      let currencies = [];
+      Object.values(country.currencies).forEach((currencyObj)=> {
+        currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
+      });
+      country.currencies = currencies;
       collection.addNode(country);
     }
   })

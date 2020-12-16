@@ -10,6 +10,10 @@
         :tld="edge.node.tld"
         :callingCodes="edge.node.callingCodes"
         :isoCodes="{'cca3': edge.node.cca3, 'ccn3': edge.node.ccn3}"
+        :languages="edge.node.languages"
+        :currencies="edge.node.currencies"
+        :area="edge.node.area"
+        :landlocked="edge.node.landlocked"
       />
     </div>
   </div>
@@ -27,11 +31,15 @@ query {
         capital
 				region
 				subregion
+        languages
+        currencies
         independent
         tld
 				callingCodes
         cca3
   			ccn3
+        area
+        landlocked
       }
     }
   }
