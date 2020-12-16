@@ -5,6 +5,11 @@
         :name="edge.node.name.common"
         :flag="edge.node.flag"
         :capital="edge.node.capital[0]"
+        :region="edge.node.region"
+        :subregion="edge.node.subregion"
+        :tld="edge.node.tld"
+        :callingCodes="edge.node.callingCodes"
+        :isoCodes="{'cca3': edge.node.cca3, 'ccn3': edge.node.ccn3}"
       />
     </div>
   </div>
@@ -18,18 +23,15 @@ query {
         name {
           common
         }
-        cca3
         flag
         capital
-				tld
 				region
 				subregion
-				independent
+        independent
+        tld
 				callingCodes
-				cca2
+        cca3
   			ccn3
-  			cca3
-  			cioc
       }
     }
   }

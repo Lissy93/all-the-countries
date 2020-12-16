@@ -10,7 +10,21 @@
     </div>
     <div v-on:click="detailsVisible = !detailsVisible" class="show-hide-button">▼</div>
     <transition name="slide-fade">
-    <div v-if="detailsVisible" class="additional-content" >Additional Content</div>
+    <div v-if="detailsVisible" class="additional-content">
+      <p><b>Region: </b> {{region}}, {{subregion}}</p>
+      <p>
+        <b>Domain Extension: </b>
+        <span v-for="domain in tld" :key="domain">{{domain}} </span>
+      </p>
+      <p>
+        <b>Calling Codes: </b>
+        <span v-for="callCode in callingCodes" :key="callCode">{{callCode}} </span>
+      </p>
+      <p>
+        <b>Country Code (ISO 3166-1): </b>
+        <span>{{isoCodes.cca3}} / {{isoCodes.ccn3}}</span>
+      </p>
+    </div>
     </transition>
   </div>
 </template>
@@ -31,6 +45,11 @@ export default {
     name: String,
     flag: String,
     capital: String,
+    region: String,
+    subregion: String,
+    tld: Array,
+    callingCodes: Array,
+    isoCodes: Object,
 },
   methods: {
     parseEmoji: (input) => twemoji.parse(input)
@@ -71,6 +90,11 @@ div.additional-content {
   margin: 0.5rem;
   padding: 0.5rem;
   transition: height,.08s linear;
+
+  p {
+    margin: 0.1rem;
+    font-size: 0.9rem;
+  }
 
 }
 
