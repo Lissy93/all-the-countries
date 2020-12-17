@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
     <div class="country">
-      <div class="country-main-info-wrapper">
+      <div class="country-main-info-wrapper" v-on:click="toggle()">
         <h4 class="country-name">{{name}}</h4>
         <span class="line-contector"> - </span>
         <p class="country-capital">{{capital}}</p>
       </div>
       <div class="country-flag" v-html="parseEmoji(flag)"></div>
     </div>
-    <div v-on:click="detailsVisible = !detailsVisible" class="show-hide-button">
+    <div v-on:click="toggle()" class="show-hide-button">
       {{detailsVisible ? '▲' : '▼'}}
       </div>
     <transition name="slide-fade">
@@ -54,6 +54,7 @@ export default {
 },
   methods: {
     parseEmoji: (input) => twemoji.parse(input),
+    toggle: function() { this.detailsVisible = !this.detailsVisible; },
     makeTextList: (arr) => {
       let result = '';
       arr.forEach((elem, index) =>
@@ -85,9 +86,7 @@ div.show-hide-button {
   padding: 0.5rem;
   color: var(--small-text);
   cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
+  border-radius: 4px;
 }
 
 div.additional-content {
@@ -112,6 +111,7 @@ div.country { // Country container
   justify-content: flex-end;
   align-items: center;
   max-width: 90%;
+  cursor: default;
 
   div.country-flag {
     img {
