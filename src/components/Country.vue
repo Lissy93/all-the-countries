@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
-    <div class="country">
-      <div class="country-main-info-wrapper" v-on:click="toggle()">
+  <div :class="`${display} wrapper`">
+    <div :class="`${display} country`">
+      <div :class="`${display} country-main-info-wrapper`">
         <h4 class="country-name">{{name}}</h4>
         <span class="line-contector"> - </span>
         <p class="country-capital">{{capital}}</p>
@@ -39,6 +39,7 @@ export default {
     };
   },
   props: {
+    display: String,
     name: String,
     flag: String,
     capital: String,
@@ -68,18 +69,36 @@ export default {
 
 <style lang="scss">
 
+
 div.wrapper {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   flex-wrap: wrap;
   page-break-after: always;
-  margin: 0.5rem auto;
-  max-width: 650px;
 	background: var(--foreground);
 	border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  &.list {
+    margin: 0.5rem auto;
+    max-width: 650px;
+  }
+
+  &.grid {
+    width: 200px;
+    min-height: 90px;
+    margin: 0.5rem;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
+
+.wrapper.grid  {
+  .show-hide-button {
+    display: none;
+  }
 }
 
 div.show-hide-button {
@@ -113,6 +132,12 @@ div.country { // Country container
   max-width: 90%;
   cursor: default;
 
+  &.grid {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
   div.country-flag {
     img {
       height: 2.5rem;
@@ -127,6 +152,17 @@ div.country { // Country container
       align-items: baseline;
       margin: 0 0.5rem;
       overflow: hidden;
+
+      &.grid {
+        flex-direction: column;
+        .line-contector {
+          display: none;
+        }
+        h4, p {
+          width: 100%;
+          text-align: center;
+        }
+      }
 
       h4.country-name {
         font-size: 1rem;

@@ -1,7 +1,8 @@
 <template>
-  <div class="countries-wrapper">
+  <div :class="`${display} countries-wrapper`">
     <div v-for="edge in $static.allTheCountries.edges" :key="edge.node.cca3">
       <Country
+        :display="display"
         :name="edge.node.name.common"
         :flag="edge.node.flag"
         :capital="edge.node.capital[0]"
@@ -52,13 +53,20 @@ import Country from '~/components/Country';
 export default {
   components: {
     Country,
+  },
+  props: {
+    display: String,
   }
 
 }
 </script>
 
-<style>
+<style lang="scss">
 .countries-wrapper {
   padding: 0.5rem 1rem;
+  &.grid {
+    display: flex;
+   flex-wrap: wrap;
+  }
 }
 </style>
