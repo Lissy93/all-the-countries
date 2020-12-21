@@ -66,7 +66,9 @@ export default {
   padding: 0.5rem 1rem;
   &.grid {
     display: flex;
-   flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 5%;
   }
 }
 </style>

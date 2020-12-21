@@ -88,9 +88,10 @@ div.wrapper {
 
   &.grid {
     width: 200px;
-    min-height: 90px;
+    min-height: 110px;
     margin: 0.5rem;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
   }
 }
@@ -169,7 +170,7 @@ div.country { // Country container
         margin: 0;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
+        // white-space: nowrap;
       }
 
       p.country-capital {
