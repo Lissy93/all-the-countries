@@ -22,8 +22,11 @@ module.exports = function (api) {
         currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
       });
       country.currencies = currencies;
-      // Add country node to collection
-      collection.addNode(country);
+
+      // if(country.flag) {
+        // Add country node to collection
+        collection.addNode(country);
+      // };
     }
   })
 }

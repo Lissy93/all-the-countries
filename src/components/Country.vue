@@ -1,19 +1,19 @@
 <template>
   <div :class="`${display} wrapper`">
     <div :class="`${display} country`">
-      <div :class="`${display} country-main-info-wrapper`">
+      <div :class="`${display} country-main-info-wrapper`" v-on:click="toggle()">
         <h4 class="country-name">{{name}}</h4>
         <span class="line-contector"> - </span>
-        <p class="country-capital">{{capital}}</p>
+        <p class="country-capital">{{capital ? capital : '[NO CAPITAL]'}}</p>
       </div>
-      <div class="country-flag" v-html="parseEmoji(flag)"></div>
+      <div :class="`${display} country-flag`" v-html="parseEmoji(flag)"></div>
     </div>
     <div v-on:click="toggle()" class="show-hide-button">
       {{detailsVisible ? '▲' : '▼'}}
       </div>
     <transition name="slide-fade">
     <div v-if="detailsVisible" class="additional-content">
-      <p><b>Region: </b> {{region}}, {{subregion}}</p>
+      <p><b>Region: </b> {{region}} ({{subregion}})</p>
       <p><b>Languages: </b><span>{{makeTextList(languages)}}</span></p>
       <p><b>Currencies: </b><span>{{makeTextList(currencies)}}</span></p>
       <p><b>Domain Extension: </b><span>{{makeTextList(tld)}}</span></p>
@@ -21,6 +21,7 @@
       <p><b>Country Code (ISO 3166-1): </b><span>{{isoCodes.cca3}} / {{isoCodes.ccn3}}</span></p>
       <p><b>Land Size: </b><span>{{area}} km²</span></p>
       <p><b>Land Locked?: </b><span>{{landlocked? 'Yes' : 'No'}}</span></p>
+      <p><b>UN Member: </b><span>{{unMember? 'Yes' : 'No'}}</span></p>
     </div>
     </transition>
   </div>
@@ -52,6 +53,8 @@ export default {
     currencies: Array,
     area: Number,
     landlocked: Boolean,
+    independent: Boolean,
+    unMember: Boolean,
 },
   methods: {
     parseEmoji: (input) => twemoji.parse(input),
@@ -88,7 +91,7 @@ div.wrapper {
 
   &.grid {
     width: 200px;
-    min-height: 110px;
+    min-height: 140px;
     margin: 0.5rem;
     justify-content: center;
     align-items: center;
@@ -143,6 +146,12 @@ div.country { // Country container
     img {
       height: 2.5rem;
       margin: 0 0.5rem;
+    }
+    &.grid {
+      img {
+        height: 3.5rem;
+        margin: 0.5rem
+      }
     }
   }
 

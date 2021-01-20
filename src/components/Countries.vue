@@ -15,6 +15,8 @@
         :currencies="edge.node.currencies"
         :area="edge.node.area"
         :landlocked="edge.node.landlocked"
+        :independent="edge.node.independent"
+        :unMember="edge.node.unMember"
       />
     </div>
   </div>
@@ -34,13 +36,14 @@ query {
 				subregion
         languages
         currencies
-        independent
         tld
 				callingCodes
         cca3
   			ccn3
         area
         landlocked
+        independent
+        unMember
       }
     }
   }
@@ -68,7 +71,8 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 5%;
+    margin: 0.5rem auto;
+    max-width: 1300px;
   }
 }
 </style>
