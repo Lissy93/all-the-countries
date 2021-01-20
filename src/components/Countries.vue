@@ -65,14 +65,20 @@ export default {
 </script>
 
 <style lang="scss">
+
+@import '~/assets/styles/media-queries.scss';
+
 .countries-wrapper {
   padding: 0.5rem 1rem;
+  margin: 0.5rem auto;
   &.grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0.5rem auto;
     max-width: 1300px;
+  }
+  @include mobile-above {
+    margin-top: 5rem; /* Fixed navbar on desktop */
   }
 }
 </style>

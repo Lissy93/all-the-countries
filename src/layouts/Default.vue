@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <header class="header">
+    <header class="header fixed">
       <h1>
         <g-link to="/">🌍 {{ $static.metadata.siteName }}</g-link>
       </h1>
@@ -21,6 +21,7 @@ query {
 </static-query>
 
 <style lang="scss">
+@import '~/assets/styles/media-queries.scss';
 
 body {
   margin:0;
@@ -41,6 +42,19 @@ body {
   padding: 1rem;
   background: var(--foreground);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 75%);
+
+  background: #161728e6;
+  background: -moz-linear-gradient(top,  #171828 50%, #161728e6 80%, #161728cc 100%);
+  background: -webkit-linear-gradient(top,  #171828 50%,#161728e6 80%,#161728cc 100%);
+  background: linear-gradient(to bottom,  #171828 50%,#161728e6 80%,#161728cc 100%);
+
+  /** For desktop devices, the navbar is fixed */
+  @include mobile-above {
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+
   h1 a {
     color: var(--text-color);
     text-decoration: none;
