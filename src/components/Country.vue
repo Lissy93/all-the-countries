@@ -96,12 +96,12 @@ div.wrapper {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-  }
-}
 
-.wrapper.grid  {
-  .show-hide-button {
-    display: none;
+    /* Show more info is disabled in grid view */
+    .show-hide-button, .additional-content {
+      display: none;
+    }
+
   }
 }
 

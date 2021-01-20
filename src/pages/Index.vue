@@ -1,10 +1,5 @@
 <template>
   <Layout>
-    <div class="controls">
-      <span>Layout</span>
-      <g-image src="~/assets/icons/list.png" width="16" @click="display = 'list'" />
-      <g-image src="~/assets/icons/grid.png" width="16" @click="display = 'grid'" />
-    </div>
     <Countries :display="display"/>
   </Layout>
 </template>
@@ -14,7 +9,7 @@ import Countries from '@/components/Countries';
 
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'All the Countries in the World'
   },
   components: {
     Countries,

@@ -57,8 +57,8 @@ body {
 
   h1 a {
     color: var(--text-color);
+    font-size: min(3vw, 36);
     text-decoration: none;
-    font-size: 2rem;
     font-variation-settings: 'wght' 200;
   }
 }
