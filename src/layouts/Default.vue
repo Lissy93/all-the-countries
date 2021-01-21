@@ -57,7 +57,8 @@ body {
 
   h1 a {
     color: var(--text-color);
-    font-size: min(3vw, 36);
+    font-size: 2rem;
+    font-size: unquote("min(3vw, 2rem)");
     text-decoration: none;
     font-variation-settings: 'wght' 200;
   }
