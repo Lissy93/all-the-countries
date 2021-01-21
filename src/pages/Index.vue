@@ -6,6 +6,8 @@
 
 <script>
 import Countries from '@/components/Countries';
+import CountryEmojis from '@/utils/country-emojis';
+import titleAnimation from '@/utils/title-update-animation';
 
 export default {
   metaInfo: {
@@ -19,6 +21,7 @@ export default {
       display: 'list',
     };
   },
+  mounted: () => titleAnimation(CountryEmojis)
 }
 </script>
 
