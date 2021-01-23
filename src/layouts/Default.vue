@@ -5,9 +5,6 @@
         <g-link to="/">🌍 {{ $static.metadata.siteName }}</g-link>
       </h1>
     </header>
-    <article class="main-content">
-
-    </article>
     <slot/>
   </div>
 </template>

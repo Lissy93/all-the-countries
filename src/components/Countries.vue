@@ -1,8 +1,8 @@
 <template>
-  <div :class="`${display} countries-wrapper`">
+  <div :class="`${controls.display} countries-wrapper`">
     <div v-for="edge in $static.allTheCountries.edges" :key="edge.node.cca3">
       <Country
-        :display="display"
+        :display="controls.display"
         :name="edge.node.name.common"
         :flag="edge.node.flag"
         :capital="edge.node.capital[0]"
@@ -58,9 +58,8 @@ export default {
     Country,
   },
   props: {
-    display: String,
+    controls: Object,
   }
-
 }
 </script>
 

@@ -1,11 +1,13 @@
 <template>
   <Layout>
-    <Countries :display="display"/>
+    <Countries :controls="controls"/>
+    <Toolbox @update-display="updateDisplay" />
   </Layout>
 </template>
 
 <script>
 import Countries from '@/components/Countries';
+import Toolbox from '@/components/Toolbox';
 import CountryEmojis from '@/utils/country-emojis';
 import titleAnimation from '@/utils/title-update-animation';
 
@@ -15,34 +17,29 @@ export default {
   },
   components: {
     Countries,
+    Toolbox,
   },
   data: () => {
     return {
-      display: 'list',
+      controls: {
+        filter: '',
+        groupBy: '',
+        filterBy: '',
+        language: 'en',
+        display: 'list',
+        theme: 'dark',
+      },
     };
   },
-  mounted: () => titleAnimation(CountryEmojis)
+  methods: {
+    updateDisplay: function (displayMode) {
+      if (displayMode == 'list' || 'grid') {
+        this.controls.display = displayMode;
+      }
+    }
+
+  },
+  // mounted: () => titleAnimation(CountryEmojis)
 }
 </script>
 
-<style lang="scss">
-
-div.controls {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  margin: 0.2rem;
-  padding: 0.2rem 0.5rem;
-  background: var(--foreground);
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  img {
-    margin: 0.2rem;
-    padding: 0.2rem;
-    border-radius: 2px;
-  }
-}
-
-</style>
