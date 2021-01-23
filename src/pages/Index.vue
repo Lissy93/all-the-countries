@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <Countries :controls="controls"/>
     <Toolbox @update-display="updateDisplay" />
+    <Countries :controls="controls"/>
   </Layout>
 </template>
 
@@ -42,4 +42,15 @@ export default {
   // mounted: () => titleAnimation(CountryEmojis)
 }
 </script>
+
+<style scoped lang="scss">
+
+@import '~/assets/styles/media-queries.scss';
+  @include mobile-above {
+    .layout {
+      padding-top: 5.5rem; /* Fixed navbar on desktop */
+    }
+  }
+
+</style>
 

@@ -65,8 +65,6 @@ export default {
 
 <style lang="scss">
 
-@import '~/assets/styles/media-queries.scss';
-
 .countries-wrapper {
   padding: 0.5rem 1rem;
   margin: 0.5rem auto;
@@ -75,9 +73,6 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1300px;
-  }
-  @include mobile-above {
-    margin-top: 5rem; /* Fixed navbar on desktop */
   }
 }
 </style>

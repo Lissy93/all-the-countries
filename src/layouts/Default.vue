@@ -39,7 +39,7 @@ body {
   padding: 1rem;
   background: var(--foreground);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 75%);
-
+  z-index: 2;
   background: #161728e6;
   background: -moz-linear-gradient(top,  #171828 50%, #161728e6 80%, #161728cc 100%);
   background: -webkit-linear-gradient(top,  #171828 50%,#161728e6 80%,#161728cc 100%);
