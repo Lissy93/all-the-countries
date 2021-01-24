@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Toolbox @update-display="updateDisplay" />
+    <Toolbox @update-display="updateDisplay" :controls="controls" />
     <Countries :controls="controls"/>
   </Layout>
 </template>
