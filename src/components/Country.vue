@@ -107,7 +107,7 @@ div.wrapper {
 
 div.show-hide-button {
   padding: 0.5rem;
-  color: var(--small-text);
+  color: var(--mid-grey);
   cursor: pointer;
   border-radius: 4px;
 }
@@ -185,7 +185,7 @@ div.country { // Country container
       p.country-capital {
         font-size: 1rem;
         margin: 0;
-        color: var(--small-text);
+        color: var(--mid-grey);
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

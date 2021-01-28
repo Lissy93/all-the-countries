@@ -9,19 +9,39 @@
       </div>
 
       <div class="control-section filter">
-        <span>Filter By</span>
-        <input type="text" />
+        <dropdown
+            label="Filter By"
+            :options="filterByItems" 
+            :selected="'All'" 
+            v-on:updateOption="filterBy" 
+            :placeholder="'Filter By'">
+        </dropdown>
+      </div>
+
+      <div class="control-section group">
+        <dropdown
+            label="Group By"
+            :options="groupByItems" 
+            :selected="'All'" 
+            v-on:updateOption="groupBy" 
+            :placeholder="'Group By'">
+        </dropdown>
       </div>
 
       <div class="control-section language">
-        <span>Language</span>
-        <input type="text" />
+        <dropdown
+            label="Language"
+            :options="languageItems" 
+            :selected="'en'" 
+            v-on:updateOption="updateLanguage" 
+            :placeholder="'Language'">
+        </dropdown>
       </div>
 
       <div class="control-section layout">
         <span>Layout</span>
-        <g-image src="~/assets/icons/list.png" width="16" @click="updateDisplay('list')" />
-        <g-image src="~/assets/icons/grid.png" width="16" @click="updateDisplay('grid')" />
+        <g-image src="~/assets/icons/list.png" width="20" @click="updateDisplay('list')" title="List" />
+        <g-image src="~/assets/icons/grid.png" width="20" @click="updateDisplay('grid')" title="Grid" />
       </div>
     </div>
 
@@ -31,17 +51,34 @@
 
 <script>
 
+import dropdown from '@/components/Dropdown';
+
 export default {
   name: 'Toolbox',
+  components: {
+    dropdown
+  },
   methods: {
       updateDisplay(display) {
         this.$emit('update-display', display);
     },
-    
+      filterBy(selectedItem) {
+        console.log('Filter Item Selected: ', selectedItem);
+      },
+      groupBy(selectedItem) {
+        console.log('Group Item Selected: ', selectedItem);
+      },
+      updateLanguage(selectedItem) {
+        console.log('Language Item Selected: ', selectedItem);
+      },
   },
   data: () => {
     return {
       controlsVisible: false,
+      filterByItems: ['All', 'Countries Only', 'Territories Only'],
+      groupByItems: ['World', 'Continent', 'Region'],
+      languageItems: ['en', 'fr', 'de'],
+      object:  'Object Name',
     }
   },
   props: {
@@ -56,6 +93,7 @@ export default {
 
   .controls-wrapper {
     display: flex;
+    align-items: center;
     min-height: 2rem;
     margin: 0.2rem auto;
     padding: 0.2rem 0.5rem;
@@ -71,8 +109,9 @@ export default {
     .control-section {
       display: flex;
       align-items: center;
-      border-right: 1px solid var(--darker-bg);
-      margin-right: 0.5rem;
+      border-left: 1px solid var(--darker-bg);
+      margin-left: 0.5rem;
+      padding-left: 0.5rem;
 
       input {
         width: 8rem;
@@ -91,6 +130,8 @@ export default {
         margin: 0.2rem;
         padding: 0.2rem;
         border-radius: 2px;
+        cursor: pointer;
+        width: 1.2rem;
       }
     }
 
@@ -98,6 +139,7 @@ export default {
   /* Hide by default on small and medium screens */
   .controls {
       display: flex;
+      flex-wrap: wrap;
       &.controls-hidden {
         @media (max-width: 1240px) {
           display: none;
