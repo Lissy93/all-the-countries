@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Toolbox @update-display="updateDisplay" :controls="controls" />
+    <Toolbox @update-display="updateDisplay" @update-controls="updateControls" :controls="controls" />
     <Countries :controls="controls"/>
   </Layout>
 </template>
@@ -22,9 +22,9 @@ export default {
   data: () => {
     return {
       controls: {
-        filter: '',
-        groupBy: '',
-        filterBy: '',
+        search: 'all',
+        groupBy: 'none',
+        filterBy: 'none',
         language: 'en',
         display: 'list',
         theme: 'dark',
@@ -36,8 +36,10 @@ export default {
       if (displayMode == 'list' || 'grid') {
         this.controls.display = displayMode;
       }
+    },
+    updateControls: function (key, value){
+      this.controls[key] = value;
     }
-
   },
   // mounted: () => titleAnimation(CountryEmojis)
 }

@@ -5,7 +5,7 @@
     <div :class="`controls ${(!controlsVisible? 'controls-hidden ': ' ')}`">
       <div class="control-section search">
         <span>Search</span>
-        <input type="text" />
+        <input type="text" v-on:keyup="updateSearchTerm($event.target.value)" />
       </div>
 
       <div class="control-section filter">
@@ -59,6 +59,10 @@ export default {
     dropdown
   },
   methods: {
+      updateSearchTerm(searchTerm) {
+        this.$emit('update-controls', 'search', searchTerm);
+        console.log('Search Term Updated: ', searchTerm);
+      },
       updateDisplay(display) {
         this.$emit('update-display', display);
     },
