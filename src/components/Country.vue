@@ -96,6 +96,7 @@ div.wrapper {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    height: 90%;
 
     /* Show more info is disabled in grid view */
     .show-hide-button, .additional-content {
