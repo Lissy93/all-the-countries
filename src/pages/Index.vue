@@ -74,7 +74,7 @@ export default {
       this.groupBy = groupBy;
     },
   },
-  // mounted: () => titleAnimation(CountryEmojis)
+  mounted: () => titleAnimation(CountryEmojis)
 }
 </script>
 

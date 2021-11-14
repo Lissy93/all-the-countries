@@ -139,6 +139,7 @@ export default {
         cursor: pointer;
         width: 1.2rem;
       }
+      &.language { display: none; } // not yet implemented
     }
 
 
