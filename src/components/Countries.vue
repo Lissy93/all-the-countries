@@ -1,8 +1,8 @@
 <template>
-  <div :class="`${controls.display} countries-wrapper`">
+  <div :class="`${display} countries-wrapper`">
     <div v-for="country in allCountries" :key="country.cca3">
       <Country
-        :display="controls.display"
+        :display="display"
         :name="country.name.common"
         :flag="country.flag"
         :capital="country.capital[0]"
@@ -26,21 +26,14 @@
 
 import Country from '~/components/Country'; // Country component
 import RawCountriesData from '@/data/countries.yml'; // Raw Data
-import formatRawData from '@/utils/formatRawData'; // Util function to clean raw data
 
 export default {
   components: {
     Country,
   },
   props: {
-    searchTerm: String,
-    filterBy: String,
-    controls: Object,
-  },
-  computed: {
-    allCountries: function() {
-      return formatRawData(RawCountriesData, this.searchTerm, this.filterBy);
-    },
+    display: String,
+    allCountries: Array,
   },
 }
 </script>

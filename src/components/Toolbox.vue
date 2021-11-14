@@ -1,5 +1,5 @@
 <template>
-  <div :class="`controls-wrapper ${(!controlsVisible? 'collapse': '')} disp-${controls.display}`">
+  <div :class="`controls-wrapper ${(!controlsVisible? 'collapse': '')} disp-${display}`">
     <h3 class="controls-title" @click="controlsVisible = !controlsVisible">Filters</h3>
     
     <div :class="`controls ${(!controlsVisible? 'controls-hidden ': ' ')}`">
@@ -22,7 +22,7 @@
         <dropdown
             label="Group By"
             :options="groupByItems" 
-            :selected="'All'" 
+            :selected="'None'" 
             v-on:updateOption="groupBy" 
             :placeholder="'Group By'">
         </dropdown>
@@ -58,6 +58,9 @@ export default {
   components: {
     dropdown
   },
+  props: {
+    display: String,
+  },
   methods: {
       updateSearchTerm(searchTerm) {
         this.$emit('filter-countries', searchTerm);
@@ -79,14 +82,11 @@ export default {
     return {
       controlsVisible: false,
       filterByItems: ['All', 'Countries Only', 'Territories Only'],
-      groupByItems: ['World', 'Continent', 'Region'],
+      groupByItems: ['None', 'Continent', 'Region'],
       languageItems: ['en', 'fr', 'de'],
       object:  'Object Name',
-    }
+    };
   },
-  props: {
-    controls: Object,
-  }
 }
 </script>
 
