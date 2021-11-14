@@ -33,13 +33,14 @@ export default {
     Country,
   },
   props: {
+    searchTerm: String,
     controls: Object,
   },
-  data: () => {
-    return {
-      allCountries: formatRawData(RawCountriesData),
-    };
-  }
+  computed: {
+    allCountries: function() {
+      return formatRawData(RawCountriesData, this.searchTerm);
+    },
+  },
 }
 </script>
 
@@ -51,7 +52,6 @@ export default {
   &.grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     max-width: 1300px;
   }
 }

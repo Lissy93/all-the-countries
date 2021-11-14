@@ -60,8 +60,7 @@ export default {
   },
   methods: {
       updateSearchTerm(searchTerm) {
-        this.$emit('update-controls', 'search', searchTerm);
-        console.log('Search Term Updated: ', searchTerm);
+        this.$emit('filter-countries', searchTerm);
       },
       updateDisplay(display) {
         this.$emit('update-display', display);
