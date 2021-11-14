@@ -34,11 +34,12 @@ export default {
   },
   props: {
     searchTerm: String,
+    filterBy: String,
     controls: Object,
   },
   computed: {
     allCountries: function() {
-      return formatRawData(RawCountriesData, this.searchTerm);
+      return formatRawData(RawCountriesData, this.searchTerm, this.filterBy);
     },
   },
 }

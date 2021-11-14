@@ -66,7 +66,7 @@ export default {
         this.$emit('update-display', display);
     },
       filterBy(selectedItem) {
-        console.log('Filter Item Selected: ', selectedItem);
+        this.$emit('filter-by', selectedItem);
       },
       groupBy(selectedItem) {
         console.log('Group Item Selected: ', selectedItem);

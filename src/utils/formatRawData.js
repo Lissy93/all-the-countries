@@ -19,7 +19,14 @@ const search = (country, searchTerm) => {
   return false;
 };
 
-const formatRawData = (inputData, searchTerm) => {
+const filter = (country, filterOption) => {
+  if (filterOption === 'All') return true;
+  if (filterOption === 'Countries Only' && country.independent) return true;
+  if (filterOption === 'Territories Only' && !country.independent) return true;
+  return false;
+};
+
+const formatRawData = (inputData, searchTerm, filterBy) => {
 
   const json2array = (json) => {
     const result = [];
@@ -41,7 +48,10 @@ const formatRawData = (inputData, searchTerm) => {
     country.callingCodes = json2array(country.callingCodes);
     country.tld = json2array(country.tld);
     // Finally, push completed object to array
-    if (!searchTerm || search(country, searchTerm.trim())) {
+    if (
+      (!searchTerm || search(country, searchTerm.trim()))
+      && (!filterBy || filter(country, filterBy))
+    ) {
       results.push(country);
     }
   }

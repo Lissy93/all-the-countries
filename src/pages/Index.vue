@@ -1,7 +1,16 @@
 <template>
   <Layout>
-    <Toolbox @update-display="updateDisplay" @filter-countries="filterCountries" :controls="controls" />
-    <Countries :controls="controls" :searchTerm="searchTerm" />
+    <Toolbox
+      @update-display="updateDisplay"
+      @filter-countries="filterCountries"
+      @filter-by="updateFilter"
+      :controls="controls"
+    />
+    <Countries
+      :searchTerm="searchTerm"
+      :filterBy="filterBy"
+      :controls="controls"
+    />
   </Layout>
 </template>
 
@@ -22,6 +31,7 @@ export default {
   data: () => {
     return {
       searchTerm: '',
+      filterBy: '',
       controls: {
         search: 'all',
         groupBy: 'none',
@@ -43,6 +53,9 @@ export default {
     },
     filterCountries(searchTerm) {
       this.searchTerm = searchTerm;
+    },
+    updateFilter(filterBy) {
+      this.filterBy = filterBy;
     },
   },
   // mounted: () => titleAnimation(CountryEmojis)
