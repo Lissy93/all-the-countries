@@ -1,6 +1,6 @@
 # 🌎 All the Countries
 
-Just a simple app which lists all the countries, flags and capital cities. Useful if you're trying to memorize this info.
+A simple app which lists all the countries, flags and capital cities, useful for memorizing this info.
 
 ![Screenshot](https://i.ibb.co/DDfYgSk/atc-screenshots.png)
 
