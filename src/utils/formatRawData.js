@@ -1,6 +1,25 @@
 
+const search = (country, searchTerm) => {
+  const check = (text) => text.toString().trim().toLowerCase().includes(searchTerm.toLowerCase());
+  if (check(country.name.common)) return true;
+  if (check(country.name.official)) return true;
+  if (check(country.capital)) return true;
+  if (check(country.area)) return true;
+  if (check(country.altSpellings)) return true;
+  if (check(country.callingCodes)) return true;
+  if (check(country.cca2)) return true;
+  if (check(country.cca3)) return true;
+  if (check(country.ccn3)) return true;
+  if (check(country.cioc)) return true;
+  const checkTranslations = Object.keys(country.translations).some((translation) => {
+    const obj = country.translations[translation];
+    return (obj.official.includes(searchTerm) || obj.common.includes(searchTerm));
+  });
+  if (checkTranslations) return true;
+  return false;
+};
 
-const formatRawData = (inputData) => {
+const formatRawData = (inputData, searchTerm) => {
 
   const json2array = (json) => {
     const result = [];
@@ -14,7 +33,7 @@ const formatRawData = (inputData) => {
     country.languages = Object.values(country.languages);
     let currencies = [];
     // Format Currency data, for GraphQL
-    Object.values(country.currencies).forEach((currencyObj)=> {
+    Object.values(country.currencies).forEach((currencyObj) => {
       currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
     });
     country.currencies = currencies;
@@ -22,7 +41,9 @@ const formatRawData = (inputData) => {
     country.callingCodes = json2array(country.callingCodes);
     country.tld = json2array(country.tld);
     // Finally, push completed object to array
-    results.push(country);
+    if (!searchTerm || search(country, searchTerm.trim())) {
+      results.push(country);
+    }
   }
   return results;
 }
