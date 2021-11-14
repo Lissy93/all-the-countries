@@ -1,23 +1,26 @@
 <template>
-  <div :class="`${display} countries-wrapper`">
-    <div v-for="country in allCountries" :key="country.cca3">
-      <Country
-        :display="display"
-        :name="country.name.common"
-        :flag="country.flag"
-        :capital="country.capital[0]"
-        :region="country.region"
-        :subregion="country.subregion"
-        :tld="country.tld"
-        :callingCodes="country.callingCodes"
-        :isoCodes="{'cca3': country.cca3, 'ccn3': country.ccn3}"
-        :languages="country.languages"
-        :currencies="country.currencies"
-        :area="country.area"
-        :landlocked="country.landlocked"
-        :independent="country.independent"
-        :unMember="country.unMember"
-      />
+  <div>
+    <h3 v-if="heading" :class="`heading-${display} group-heading`">{{ heading }}</h3>
+    <div :class="`${display} countries-wrapper`">
+      <div v-for="country in allCountries" :key="country.cca3">
+        <Country
+          :display="display"
+          :name="country.name.common"
+          :flag="country.flag"
+          :capital="country.capital[0]"
+          :region="country.region"
+          :subregion="country.subregion"
+          :tld="country.tld"
+          :callingCodes="country.callingCodes"
+          :isoCodes="{'cca3': country.cca3, 'ccn3': country.ccn3}"
+          :languages="country.languages"
+          :currencies="country.currencies"
+          :area="country.area"
+          :landlocked="country.landlocked"
+          :independent="country.independent"
+          :unMember="country.unMember"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +35,7 @@ export default {
     Country,
   },
   props: {
+    heading: String,
     display: String,
     allCountries: Array,
   },
@@ -48,5 +52,12 @@ export default {
     flex-wrap: wrap;
     max-width: 1300px;
   }
+}
+h3.group-heading {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1rem auto 0.25rem auto;
+  &.heading-grid { max-width: 1300px; }
+  &.heading-list { max-width: 650px; }
 }
 </style>

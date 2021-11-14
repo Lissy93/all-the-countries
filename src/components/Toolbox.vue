@@ -72,7 +72,10 @@ export default {
         this.$emit('filter-by', selectedItem);
       },
       groupBy(selectedItem) {
-        console.log('Group Item Selected: ', selectedItem);
+        let emiitValue = '';
+        if (selectedItem === 'Continent') emiitValue = 'region';
+        if (selectedItem === 'Region') emiitValue = 'subregion';
+        this.$emit('group-by', emiitValue);
       },
       updateLanguage(selectedItem) {
         console.log('Language Item Selected: ', selectedItem);

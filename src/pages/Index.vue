@@ -4,13 +4,23 @@
       @update-display="updateDisplay"
       @filter-countries="filterCountries"
       @filter-by="updateFilter"
-      :controls="controls"
+      @group-by="updateGrouping"
       :display="display"
     />
     <Countries
+      v-if="!groupBy || groupBy === 'None'"
       :display="display"
       :allCountries="allCountries"
     />
+    <div v-else>
+      <div v-for="(countries, index) in groupedCountries">
+        <Countries
+          :display="display"
+          :allCountries="countries"
+          :heading="index"
+        />
+      </div>
+    </div>
   </Layout>
 </template>
 
@@ -21,6 +31,7 @@ import CountryEmojis from '@/utils/country-emojis';
 import titleAnimation from '@/utils/title-update-animation';
 import RawCountriesData from '@/data/countries.yml'; // Raw Data
 import formatRawData from '@/utils/formatRawData'; // Util function to clean raw data
+import groupCountries from '@/utils/group-countries'; // Util function to clean raw data
 
 export default {
   metaInfo: {
@@ -29,6 +40,10 @@ export default {
   computed: {
     allCountries: function() {
       return formatRawData(RawCountriesData, this.searchTerm, this.filterBy);
+    },
+    groupedCountries: function() {
+      const groups = groupCountries(this.allCountries, this.groupBy.toLowerCase());
+      return groups;
     },
   },
   components: {
@@ -39,15 +54,8 @@ export default {
     return {
       searchTerm: '',
       filterBy: '',
+      groupBy: '',
       display: 'list',
-      controls: {
-        search: 'all',
-        groupBy: 'none',
-        filterBy: 'none',
-        language: 'en',
-        display: 'list',
-        theme: 'dark',
-      },
     };
   },
   methods: {
@@ -56,14 +64,14 @@ export default {
         this.display = displayMode;
       }
     },
-    updateControls: function (key, value){
-      this.controls[key] = value;
-    },
     filterCountries(searchTerm) {
       this.searchTerm = searchTerm;
     },
     updateFilter(filterBy) {
       this.filterBy = filterBy;
+    },
+    updateGrouping(groupBy) {
+      this.groupBy = groupBy;
     },
   },
   // mounted: () => titleAnimation(CountryEmojis)
@@ -78,6 +86,5 @@ export default {
       padding-top: 5.5rem; /* Fixed navbar on desktop */
     }
   }
-
 </style>
 
