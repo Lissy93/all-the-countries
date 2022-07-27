@@ -40,10 +40,12 @@ const formatRawData = (inputData, searchTerm, filterBy) => {
     country.languages = Object.values(country.languages);
     let currencies = [];
     // Format Currency data, for GraphQL
-    Object.values(country.currencies).forEach((currencyObj) => {
-      currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
-    });
-    country.currencies = currencies;
+    if (!Array.isArray(country.currencies)) {
+      Object.values(country.currencies).forEach((currencyObj) => {
+        currencies.push(`${currencyObj.name} (${currencyObj.symbol})`);
+      });
+      country.currencies = currencies;
+    }
     // Convert Calling codes and Top-level-domains to Arrays
     country.callingCodes = json2array(country.callingCodes);
     country.tld = json2array(country.tld);
