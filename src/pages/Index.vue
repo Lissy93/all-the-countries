@@ -13,7 +13,7 @@
       :allCountries="allCountries"
     />
     <div v-else>
-      <div v-for="(countries, index) in groupedCountries">
+      <div v-for="(countries, index) in groupedCountries" :key="index">
         <Countries
           :display="display"
           :allCountries="countries"
@@ -38,12 +38,11 @@ export default {
     title: 'All the Countries in the World'
   },
   computed: {
-    allCountries: function() {
+    allCountries() {
       return formatRawData(RawCountriesData, this.searchTerm, this.filterBy);
     },
-    groupedCountries: function() {
-      const groups = groupCountries(this.allCountries, this.groupBy.toLowerCase());
-      return groups;
+    groupedCountries() {
+      return groupCountries(this.allCountries, this.groupBy.toLowerCase());
     },
   },
   components: {
@@ -59,7 +58,7 @@ export default {
     };
   },
   methods: {
-    updateDisplay: function (displayMode) {
+    updateDisplay: (displayMode) => {
       if (displayMode == 'list' || 'grid') {
         this.display = displayMode;
       }

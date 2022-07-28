@@ -28,7 +28,6 @@
 <script>
 
 import Country from '~/components/Country'; // Country component
-import RawCountriesData from '@/data/countries.yml'; // Raw Data
 
 export default {
   components: {
