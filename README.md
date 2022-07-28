@@ -3,7 +3,11 @@
   <i>A simple app listing all the countries of the world along with flags, capital cities and info</i>
 </p>
 
-<p align="center"><img width="800" src="https://i.ibb.co/DDfYgSk/atc-screenshots.png"/></p>
+<p align="center">
+  <a href="https://github.com/Lissy93/all-the-countries">
+    <img width="800" src="https://i.ibb.co/8srTXz6/all-the-countries.png"/>
+  </a>
+</p>
 
 ---
 
