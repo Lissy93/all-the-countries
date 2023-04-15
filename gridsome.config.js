@@ -3,5 +3,14 @@
 
 module.exports = {
   siteName: 'All the Countries in the World!',
-  plugins: [],
+  plugins: [
+    {
+      use: 'gridsome-plugin-plausible-analytics',
+      options: {
+        dataDomain: 'countries.as93.net',
+        customDomain: 'no-track.as93.net',
+        outboundLinkTracking: false
+      }
+    }
+  ],
 }
