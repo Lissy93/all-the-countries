@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "gridsome": "^0.7.0",
+    "gridsome-plugin-plausible-analytics": "^1.2.0",
     "js-yaml": "^3.14.0",
+    "sass": "^1.54.0",
     "twemoji": "^13.0.1"
   },
   "devDependencies": {
